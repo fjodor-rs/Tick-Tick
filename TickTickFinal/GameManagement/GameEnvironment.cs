@@ -97,6 +97,7 @@ public class GameEnvironment : Game
         viewport.Height = height;
         GraphicsDevice.Viewport = viewport;
 
+
         inputHelper.Scale = new Vector2((float)GraphicsDevice.Viewport.Width / screen.X,
                                         (float)GraphicsDevice.Viewport.Height / screen.Y);
         inputHelper.Offset = new Vector2(viewport.X, viewport.Y);

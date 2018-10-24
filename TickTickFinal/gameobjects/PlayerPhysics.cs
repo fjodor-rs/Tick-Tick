@@ -21,6 +21,16 @@ partial class Player :  AnimatedGameObject
         }
     }
 
+    public override Rectangle BoundingBox
+    {
+        get
+        {
+            int left = (int)(GlobalPosition.X - origin.X);
+            int top = (int)(GlobalPosition.Y - origin.Y);
+            return new Rectangle(left + 10, top, Width - 20, Height);
+        }
+    }
+
     private void HandleCollisions()
     {
         isOnTheGround = false;
