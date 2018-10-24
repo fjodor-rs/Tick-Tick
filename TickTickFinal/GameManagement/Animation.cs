@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
+//Joris is fantastisch
 public class Animation : SpriteSheet
 {
     protected float frameTime;
