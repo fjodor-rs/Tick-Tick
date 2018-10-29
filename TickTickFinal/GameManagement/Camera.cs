@@ -13,6 +13,7 @@ class Camera : GameEnvironment
 
     public Camera ()
     {
+
     }
 
 }
