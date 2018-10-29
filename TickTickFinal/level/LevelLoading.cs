@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework;
 
@@ -164,8 +165,8 @@ partial class Level : GameObjectList
     {
         GameObjectList waterdrops = Find("waterdrops") as GameObjectList;
         TileField tiles = Find("tiles") as TileField;
-        WaterDrop w = new WaterDrop();
-        w.Origin = w.Center;
+		WaterDrop w = new WaterDrop();
+		w.Origin = w.Center;
         w.Position = new Vector2(x * tiles.CellWidth, y * tiles.CellHeight - 10);
         w.Position += new Vector2(tiles.CellWidth, tiles.CellHeight) / 2;
         waterdrops.Add(w);
