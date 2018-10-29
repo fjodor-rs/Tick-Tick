@@ -13,6 +13,11 @@ public class Camera
 	Vector2 position;
 	Matrix viewMatrix = Matrix.Identity;
 
+	public Vector2 Position
+	{
+		get { return position; }
+	}
+
 	public Matrix ViewMatrix
 	{
 		get { return viewMatrix; }
@@ -38,5 +43,7 @@ public class Camera
 
 		viewMatrix = Matrix.CreateTranslation(new Vector3(-position, 0));
 	}
+
+
 }
 

@@ -34,9 +34,7 @@ partial class Level : GameObjectList
         Add(timer);
 
         quitButton = new Button("Sprites/spr_button_quit", 100);
-        quitButton.Position = new Vector2(GameEnvironment.Screen.X - quitButton.Width - 10, 10);
         Add(quitButton);
-
 
         Add(new GameObjectList(1, "waterdrops"));
         Add(new GameObjectList(2, "enemies"));

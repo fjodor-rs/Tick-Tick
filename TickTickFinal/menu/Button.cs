@@ -1,4 +1,6 @@
-﻿class Button : SpriteGameObject
+﻿using Microsoft.Xna.Framework;
+
+class Button : SpriteGameObject
 {
     protected bool pressed;
 
@@ -24,4 +26,10 @@
     {
         get { return pressed; }
     }
+
+	public override void Update(GameTime gameTime)
+	{
+		if(GameEnvironment.GameStateManager.CurrentGameState == GameEnvironment.GameStateManager.GetGameState("playingState"))
+			position = new Vector2(Camera.Instance.Position.X * 2 + GraphicsDeviceManager.DefaultBackBufferWidth - Width + 10, 10);
+	}
 }
