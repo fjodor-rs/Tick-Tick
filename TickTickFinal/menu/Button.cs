@@ -30,6 +30,6 @@ class Button : SpriteGameObject
 	public override void Update(GameTime gameTime)
 	{
 		if(GameEnvironment.GameStateManager.CurrentGameState == GameEnvironment.GameStateManager.GetGameState("playingState"))
-			position = new Vector2(Camera.Instance.Position.X * 2 + GraphicsDeviceManager.DefaultBackBufferWidth - Width + 10, 10);
-	}
+            position = new Vector2(Camera.Instance.Position.X + GraphicsDeviceManager.DefaultBackBufferWidth - 10, 10);
+    }
 }
