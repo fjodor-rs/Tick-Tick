@@ -58,6 +58,7 @@ class PlayingState : IGameLoopObject
         {
             CurrentLevel.Solved = true;
             GameEnvironment.GameStateManager.SwitchTo("levelFinishedState");
+			Camera.Instance.ResetScreen();
         }
     }
 

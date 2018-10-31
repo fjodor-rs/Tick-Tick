@@ -5,18 +5,26 @@ using Microsoft.Xna.Framework;
 
 partial class Level : GameObjectList
 {
-    public void LoadTiles(string path)
+	public int height;
+	public int width;
+
+	public int Height { get { return height; } }
+	public int Width { get { return width; } }
+
+	public void LoadTiles(string path)
     {
         List<string> textLines = new List<string>();
         StreamReader fileReader = new StreamReader(path);
         string line = fileReader.ReadLine();
-        int width = line.Length;
+        width = line.Length;
+		
         while (line != null)
         {
             textLines.Add(line);
             line = fileReader.ReadLine();
         }
-        TileField tiles = new TileField(textLines.Count - 1, width, 1, "tiles");
+		height = textLines.Count - 1;
+        TileField tiles = new TileField(height, width, 1, "tiles");
 
         GameObjectList hintField = new GameObjectList(100);
         Add(hintField);
