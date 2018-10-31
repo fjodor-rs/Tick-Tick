@@ -114,7 +114,7 @@ partial class Player : AnimatedGameObject
             }
         }
         DoPhysics();
-		Camera.Instance.SetFocalPoint(new Vector2(position.X, GraphicsDeviceManager.DefaultBackBufferHeight / 2));
+		Camera.Instance.SetFocalPoint(new Vector2(this.GlobalPosition.X, GraphicsDeviceManager.DefaultBackBufferHeight / 2));
 	}
 
     public void Explode()

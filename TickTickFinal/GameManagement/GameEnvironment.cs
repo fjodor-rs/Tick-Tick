@@ -133,7 +133,8 @@ public class GameEnvironment : Game
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.Black);
-        spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, spriteScale * Camera.Instance.ViewMatrix);
+        Matrix transform = Camera.Instance.ViewMatrix * spriteScale;
+        spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, transform);
         gameStateManager.Draw(gameTime, spriteBatch);
         spriteBatch.End();
     }
