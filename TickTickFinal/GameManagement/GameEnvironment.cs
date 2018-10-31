@@ -91,8 +91,8 @@ public class GameEnvironment : Game
         }
 
         Viewport viewport = new Viewport();
-        viewport.X = (graphics.PreferredBackBufferWidth / 2) - (width);
-        viewport.Y = (graphics.PreferredBackBufferHeight / 2) - (height);
+        viewport.X = (graphics.PreferredBackBufferWidth / 2) - (width / 2);
+        viewport.Y = (graphics.PreferredBackBufferHeight / 2) - (height / 2);
         viewport.Width = width;
         viewport.Height = height;
         GraphicsDevice.Viewport = viewport;
@@ -101,7 +101,7 @@ public class GameEnvironment : Game
         inputHelper.Scale = new Vector2((float)GraphicsDevice.Viewport.Width / screen.X,
                                         (float)GraphicsDevice.Viewport.Height / screen.Y);
         inputHelper.Offset = new Vector2(viewport.X, viewport.Y);
-        spriteScale = Matrix.CreateScale(inputHelper.Scale.X * 2, inputHelper.Scale.Y * 2, 1);
+        spriteScale = Matrix.CreateScale(inputHelper.Scale.X, inputHelper.Scale.Y, 1);
     }
 
     protected override void LoadContent()
