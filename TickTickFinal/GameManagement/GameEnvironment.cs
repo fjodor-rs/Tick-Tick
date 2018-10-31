@@ -8,7 +8,7 @@ public class GameEnvironment : Game
     protected GraphicsDeviceManager graphics;
     protected SpriteBatch spriteBatch;
     protected InputHelper inputHelper;
-    protected Matrix spriteScale;
+    public static Matrix spriteScale;
     protected Point windowSize;
 
     protected static Point screen;
@@ -27,6 +27,7 @@ public class GameEnvironment : Game
         random = new Random();
         assetManager = new AssetManager(Content);
         gameSettingsManager = new GameSettingsManager();
+		
     }
 
     public static Point Screen
@@ -97,7 +98,6 @@ public class GameEnvironment : Game
         viewport.Height = height;
         GraphicsDevice.Viewport = viewport;
 
-
         inputHelper.Scale = new Vector2((float)GraphicsDevice.Viewport.Width / screen.X,
                                         (float)GraphicsDevice.Viewport.Height / screen.Y);
         inputHelper.Offset = new Vector2(viewport.X, viewport.Y);
@@ -132,9 +132,6 @@ public class GameEnvironment : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.Black);
-        spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, spriteScale * Camera.Instance.ViewMatrix);
-        gameStateManager.Draw(gameTime, spriteBatch);
-        spriteBatch.End();
+
     }
 }
