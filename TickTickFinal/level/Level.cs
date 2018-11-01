@@ -18,7 +18,6 @@ partial class Level : GameObjectList
 			Mountain mountain = new Mountain("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), i);
 			backgrounds.Add(mountain);
 		}
-		
 
 		Clouds clouds = new Clouds(2);
         backgrounds.Add(clouds);
