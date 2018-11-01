@@ -60,6 +60,9 @@ class PlayingState : IGameLoopObject
             GameEnvironment.GameStateManager.SwitchTo("levelFinishedState");
 			Camera.Instance.ResetScreen();
         }
+
+        //----------------------------------------------------------------------------
+        CurrentLevel.Sky.Position = Camera.Instance.Position;
     }
 
     public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
