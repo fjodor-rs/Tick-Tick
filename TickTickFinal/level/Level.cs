@@ -5,6 +5,9 @@ partial class Level : GameObjectList
     protected bool locked, solved;
     protected QuitButton quitButton;
     private SpriteGameObject backgroundSky;
+    private TimerGameObject timer;
+    private SpriteGameObject timerBackground;
+
     public Level(int levelIndex)
     {
         // load the backgrounds
@@ -24,10 +27,10 @@ partial class Level : GameObjectList
         backgrounds.Add(clouds);
         Add(backgrounds);
 
-        SpriteGameObject timerBackground = new SpriteGameObject("Sprites/spr_timer", 100);
+        timerBackground = new SpriteGameObject("Sprites/spr_timer", 100);
         timerBackground.Position = new Vector2(10, 10);
         Add(timerBackground);
-        TimerGameObject timer = new TimerGameObject(101, "timer");
+        timer = new TimerGameObject(101, "timer");
         timer.Position = new Vector2(25, 30);
         Add(timer);
 
@@ -91,5 +94,16 @@ partial class Level : GameObjectList
         set { backgroundSky = value; }
     }
 
+    public SpriteGameObject TimerBackground
+    {
+        get { return timerBackground; }
+        set { timerBackground = value; }
+    }
+
+    public TimerGameObject Timer
+    {
+        get { return timer; }
+        set { timer = value; }
+    }
 }
 
