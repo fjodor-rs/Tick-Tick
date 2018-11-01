@@ -63,6 +63,8 @@ class PlayingState : IGameLoopObject
 
         //----------------------------------------------------------------------------
         CurrentLevel.Sky.Position = Camera.Instance.Position;
+        CurrentLevel.Timer.Position = Camera.Instance.Position + new Vector2(25, 30);
+        CurrentLevel.TimerBackground.Position = Camera.Instance.Position + new Vector2(10, 10);
     }
 
     public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
