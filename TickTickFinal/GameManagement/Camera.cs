@@ -37,7 +37,7 @@ public class Camera
 	public void SetFocalPoint(Vector2 focalPosition)
 	{
 		position = new Vector2(focalPosition.X - GameEnvironment.Screen.X / 2, focalPosition.Y - GameEnvironment.Screen.Y / 2);
-        position.X = MathHelper.Clamp(position.X, 0, GameEnvironment.Screen.X / 2 - levelWidth * 72);
+        position.X = MathHelper.Clamp(position.X, 0, -GameEnvironment.Screen.X + levelWidth * 72);
 		position.Y = MathHelper.Clamp(position.Y, 0, -GameEnvironment.Screen.Y + levelHeight * 55);
 		viewMatrix = Matrix.CreateTranslation(new Vector3(-position, 0));
 	}

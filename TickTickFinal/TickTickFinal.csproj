@@ -63,6 +63,7 @@
     <Compile Include="gameobjects\enemies\Sparky.cs" />
     <Compile Include="gameobjects\enemies\Turtle.cs" />
     <Compile Include="gameobjects\enemies\UnpredictableEnemy.cs" />
+    <Compile Include="gameobjects\Mountain.cs" />
     <Compile Include="gameobjects\Player.cs" />
     <Compile Include="gameobjects\PlayerPhysics.cs" />
     <Compile Include="gameobjects\Tile.cs" />
