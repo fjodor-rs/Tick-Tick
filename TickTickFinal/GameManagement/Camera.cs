@@ -12,7 +12,7 @@ public class Camera
 	private static Camera instance;
 	Vector2 position;
 	Matrix viewMatrix = Matrix.Identity;
-	public int levelWidth, levelHeight;
+	private int levelWidth, levelHeight;
 
 	public Vector2 Position
 	{
@@ -45,8 +45,18 @@ public class Camera
 	public void ResetScreen()
 	{
 		viewMatrix = Matrix.Identity;
-		//levelWidth = 0;
-		//levelHeight = 0;
 	}
+
+    public int LevelWidth
+    {
+        get { return levelWidth; }
+        set { levelWidth = value; }
+    }
+
+    public int LevelHeight
+    {
+        get { return levelHeight; }
+        set { levelHeight = value; }
+    }
 }
 

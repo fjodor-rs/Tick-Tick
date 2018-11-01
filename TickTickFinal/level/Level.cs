@@ -18,8 +18,11 @@ partial class Level : GameObjectList
 
         for (int i = 0; i < 3; i++)
         {
-            Mountain mountain = new Mountain("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), i);
-            backgrounds.Add(mountain);
+            for (int j = 0; j < GameEnvironment.Random.Next(2) + 1; j++)
+            {
+                Mountain mountain = new Mountain("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), i);
+                backgrounds.Add(mountain);
+            }
         }
 
 
