@@ -121,13 +121,32 @@ partial class Player : AnimatedGameObject
                 Die(true);
             }
         }
+		GameObjectList enemies = GameWorld.Find("enemies") as GameObjectList;
 
 		foreach (Bomb bomb in bombs)
 		{
 			bomb.Update(gameTime);
+			foreach (AnimatedGameObject enemy in enemies.Children)
+			{
+				if (bomb.CollidesWith(enemy))
+				{
+					bomb.Reset();
+					bomb.Visible = false;
+					enemy.Reset();
+				}
+			}
+		}
+		int num = bombs.Count;
+		for (int i = 0; i < num; i++)
+		{
+			if (!bombs[i].Visible)
+			{
+				bombs.Remove(bombs[i]);
+				num -= 1;
+			}
 		}
 
-        DoPhysics();
+		DoPhysics();
 		Camera.Instance.SetFocalPoint(new Vector2(this.GlobalPosition.X, this.GlobalPosition.Y));
 	}
 
@@ -153,7 +172,8 @@ partial class Player : AnimatedGameObject
 
 	public void ThrowBomb()
 	{
-		Bomb bomb = new Bomb(new Vector2(BoundingBox.Right, Center.Y));
+
+		Bomb bomb = new Bomb(new Vector2(BoundingBox.Right, GlobalPosition.Y));
 		bombs.Add(bomb);
 	}
 
