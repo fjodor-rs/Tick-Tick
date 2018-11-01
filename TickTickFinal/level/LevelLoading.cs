@@ -46,6 +46,15 @@ partial class Level : GameObjectList
 
 		tiles.CellWidth = 72;
         tiles.CellHeight = 55;
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < GameEnvironment.Random.Next(2) + 1; j++)
+            {
+                Mountain mountain = new Mountain("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), i, "", tiles.CellHeight * height);
+                backgrounds.Add(mountain);
+            }
+        }
         for (int x = 0; x < width; ++x)
         {
             for (int y = 0; y < height; ++y)
