@@ -39,9 +39,12 @@ partial class Level : GameObjectList
         hintField.Add(hintText);
         VisibilityTimer hintTimer = new VisibilityTimer(hintField, 1, "hintTimer");
         Add(hintTimer);
-
         Add(tiles);
-        tiles.CellWidth = 72;
+
+		timer.TimeLeft = TimeSpan.FromSeconds(int.Parse(textLines[height + 1]));
+		Add(timer);
+
+		tiles.CellWidth = 72;
         tiles.CellHeight = 55;
         for (int x = 0; x < width; ++x)
         {

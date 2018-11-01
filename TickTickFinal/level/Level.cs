@@ -16,16 +16,7 @@ partial class Level : GameObjectList
         backgroundSky.Position = new Vector2(0, GameEnvironment.Screen.Y - backgroundSky.Height);
         backgrounds.Add(backgroundSky);
 
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < GameEnvironment.Random.Next(2) + 1; j++)
-            {
-                Mountain mountain = new Mountain("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), i);
-                backgrounds.Add(mountain);
-            }
-        }
-
-
+   
         Clouds clouds = new Clouds(2);
         backgrounds.Add(clouds);
         Add(backgrounds);
@@ -35,7 +26,6 @@ partial class Level : GameObjectList
         Add(timerBackground);
         timer = new TimerGameObject(101, "timer");
         timer.Position = new Vector2(25, 30);
-        Add(timer);
 
         quitButton = new QuitButton("Sprites/spr_button_quit", 100);
         Add(quitButton);
