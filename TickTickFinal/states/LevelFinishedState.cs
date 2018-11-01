@@ -23,8 +23,8 @@ class LevelFinishedState : GameObjectList
 		GameEnvironment.GameStateManager.SwitchTo("playingState");
         (playingState as PlayingState).NextLevel();
 		PlayingState playState = GameEnvironment.GameStateManager.GetGameState("playingState") as PlayingState;
-		Camera.Instance.levelWidth = playState.CurrentLevel.Width;
-		Camera.Instance.levelHeight = playState.CurrentLevel.Height;
+		Camera.Instance.LevelWidth = playState.CurrentLevel.Width;
+		Camera.Instance.LevelHeight = playState.CurrentLevel.Height;
 	}
 
 	public override void Update(GameTime gameTime)

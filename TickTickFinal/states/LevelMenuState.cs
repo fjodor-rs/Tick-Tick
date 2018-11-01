@@ -54,8 +54,8 @@ class LevelMenuState : GameObjectList
         {
             PlayingState playingState = GameEnvironment.GameStateManager.GetGameState("playingState") as PlayingState;
             playingState.CurrentLevelIndex = LevelSelected - 1;
-			Camera.Instance.levelWidth = playingState.CurrentLevel.Width;
-			Camera.Instance.levelHeight = playingState.CurrentLevel.Height;
+			Camera.Instance.LevelWidth = playingState.CurrentLevel.Width;
+			Camera.Instance.LevelHeight = playingState.CurrentLevel.Height;
             GameEnvironment.GameStateManager.SwitchTo("playingState");
         }
         else if (backButton.Pressed)
