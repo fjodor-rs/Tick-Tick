@@ -25,6 +25,7 @@ class QuitButton : Button
     {
         pressed = inputHelper.MouseLeftButtonPressed() &&
             BoundingBox.Contains((int)inputHelper.MousePosition.X + Camera.Instance.Position.X, (int)inputHelper.MousePosition.Y + Camera.Instance.Position.Y);
+		Camera.Instance.ResetScreen();
     }
 
     public override void Update(GameTime gameTime)
