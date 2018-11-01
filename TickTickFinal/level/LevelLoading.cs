@@ -5,8 +5,8 @@ using Microsoft.Xna.Framework;
 
 partial class Level : GameObjectList
 {
-	public int height;
-	public int width;
+	private int height;
+	private int width;
 
 	public int Height { get { return height; } }
 	public int Width { get { return width; } }

@@ -3,24 +3,24 @@
 partial class Level : GameObjectList
 {
     protected bool locked, solved;
-    protected Button quitButton;
-
+    protected QuitButton quitButton;
+    private SpriteGameObject backgroundSky;
     public Level(int levelIndex)
     {
         // load the backgrounds
         GameObjectList backgrounds = new GameObjectList(0, "backgrounds");
-        SpriteGameObject backgroundSky = new SpriteGameObject("Backgrounds/spr_sky");
+        backgroundSky = new SpriteGameObject("Backgrounds/spr_sky");
         backgroundSky.Position = new Vector2(0, GameEnvironment.Screen.Y - backgroundSky.Height);
         backgrounds.Add(backgroundSky);
 
-		for (int i = 0; i < 3; i++)
-		{
-			Mountain mountain = new Mountain("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), i);
-			backgrounds.Add(mountain);
-		}
-		
+        for (int i = 0; i < 3; i++)
+        {
+            Mountain mountain = new Mountain("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), i);
+            backgrounds.Add(mountain);
+        }
 
-		Clouds clouds = new Clouds(2);
+
+        Clouds clouds = new Clouds(2);
         backgrounds.Add(clouds);
         Add(backgrounds);
 
@@ -31,7 +31,7 @@ partial class Level : GameObjectList
         timer.Position = new Vector2(25, 30);
         Add(timer);
 
-        quitButton = new Button("Sprites/spr_button_quit", 100);
+        quitButton = new QuitButton("Sprites/spr_button_quit", 100);
         Add(quitButton);
 
         Add(new GameObjectList(1, "waterdrops"));
@@ -83,5 +83,13 @@ partial class Level : GameObjectList
         get { return solved; }
         set { solved = value; }
     }
+
+    //---------------------------------------------------------------------------
+    public SpriteGameObject Sky
+    {
+        get { return backgroundSky; }
+        set { backgroundSky = value; }
+    }
+
 }
 
