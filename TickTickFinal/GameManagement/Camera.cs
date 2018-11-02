@@ -37,7 +37,7 @@ public class Camera
 	{
 		position = new Vector2(focalPosition.X - GameEnvironment.Screen.X / 2, focalPosition.Y - GameEnvironment.Screen.Y / 2);
         position.X = MathHelper.Clamp(position.X, 0, 0);
-        position.Y = MathHelper.Clamp(position.Y, 0, 0);
+        //position.Y = MathHelper.Clamp(position.Y, 0, 0);
         viewMatrix = Matrix.CreateTranslation(new Vector3(-position, 0));
 	}
 
