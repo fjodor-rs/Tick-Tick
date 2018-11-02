@@ -7,11 +7,14 @@ partial class Level : GameObjectList
 {
 	private int height;
 	private int width;
+    private Vector2 timerOffset, timerBackgroundOffset;
 
 	public int Height { get { return height; } }
 	public int Width { get { return width; } }
+    public Vector2 TimerOffset { get { return timerOffset; } }
+    public Vector2 TimerBackgroundOffset { get { return timerBackgroundOffset; } }
 
-	public void LoadTiles(string path)
+    public void LoadTiles(string path)
     {
         List<string> textLines = new List<string>();
         StreamReader fileReader = new StreamReader(path);
@@ -41,7 +44,9 @@ partial class Level : GameObjectList
         Add(hintTimer);
         Add(tiles);
 		timer = new TimerGameObject(int.Parse(textLines[height + 1]), 101, "timer");
-		timer.Position = new Vector2(25, 30);
+        timerBackgroundOffset = new Vector2(10, 10);
+        timerOffset = new Vector2(25, 30);
+        timer.Position = timerOffset;
 		Add(timer);
 
 		tiles.CellWidth = 72;
