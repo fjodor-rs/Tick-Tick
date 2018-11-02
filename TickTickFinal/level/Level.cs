@@ -3,37 +3,32 @@
 partial class Level : GameObjectList
 {
     protected bool locked, solved;
-    protected Button quitButton;
+    protected QuitButton quitButton;
+    private SpriteGameObject backgroundSky;
+    private TimerGameObject timer;
+    private SpriteGameObject timerBackground;
+    GameObjectList backgrounds;
 
     public Level(int levelIndex)
     {
         // load the backgrounds
-        GameObjectList backgrounds = new GameObjectList(0, "backgrounds");
-        SpriteGameObject backgroundSky = new SpriteGameObject("Backgrounds/spr_sky");
+        backgrounds = new GameObjectList(0, "backgrounds");
+        backgroundSky = new SpriteGameObject("Backgrounds/spr_sky");
         backgroundSky.Position = new Vector2(0, GameEnvironment.Screen.Y - backgroundSky.Height);
         backgrounds.Add(backgroundSky);
 
-        // add a few random mountains
-        for (int i = 0; i < 5; i++)
-        {
-            SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), 1);
-            mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * GameEnvironment.Screen.X - mountain.Width / 2, 
-                GameEnvironment.Screen.Y - mountain.Height);
-            backgrounds.Add(mountain);
-        }
+        
 
         Clouds clouds = new Clouds(2);
         backgrounds.Add(clouds);
         Add(backgrounds);
 
-        SpriteGameObject timerBackground = new SpriteGameObject("Sprites/spr_timer", 100);
+        timerBackground = new SpriteGameObject("Sprites/spr_timer", 100);
         timerBackground.Position = new Vector2(10, 10);
         Add(timerBackground);
-        TimerGameObject timer = new TimerGameObject(101, "timer");
-        timer.Position = new Vector2(25, 30);
-        Add(timer);
+        
 
-        quitButton = new Button("Sprites/spr_button_quit", 100);
+        quitButton = new QuitButton("Sprites/spr_button_quit", 100);
         Add(quitButton);
 
         Add(new GameObjectList(1, "waterdrops"));
@@ -84,6 +79,25 @@ partial class Level : GameObjectList
     {
         get { return solved; }
         set { solved = value; }
+    }
+
+    //---------------------------------------------------------------------------
+    public SpriteGameObject Sky
+    {
+        get { return backgroundSky; }
+        set { backgroundSky = value; }
+    }
+
+    public SpriteGameObject TimerBackground
+    {
+        get { return timerBackground; }
+        set { timerBackground = value; }
+    }
+
+    public TimerGameObject Timer
+    {
+        get { return timer; }
+        set { timer = value; }
     }
 }
 

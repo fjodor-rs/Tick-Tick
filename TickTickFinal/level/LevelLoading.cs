@@ -5,39 +5,59 @@ using Microsoft.Xna.Framework;
 
 partial class Level : GameObjectList
 {
-    public void LoadTiles(string path)
+	private int height;
+	private int width;
+
+	public int Height { get { return height; } }
+	public int Width { get { return width; } }
+
+	public void LoadTiles(string path)
     {
         List<string> textLines = new List<string>();
         StreamReader fileReader = new StreamReader(path);
         string line = fileReader.ReadLine();
-        int width = line.Length;
+        width = line.Length;
+		
         while (line != null)
         {
             textLines.Add(line);
             line = fileReader.ReadLine();
         }
-        TileField tiles = new TileField(textLines.Count - 1, width, 1, "tiles");
+		height = textLines.Count - 2;
+        TileField tiles = new TileField(height, width, 1, "tiles");
 
         GameObjectList hintField = new GameObjectList(100);
         Add(hintField);
-        string hint = textLines[textLines.Count - 1];
+        string hint = textLines[height];
         SpriteGameObject hintFrame = new SpriteGameObject("Overlays/spr_frame_hint", 1);
         hintField.Position = new Vector2((GameEnvironment.Screen.X - hintFrame.Width) / 2, 10);
         hintField.Add(hintFrame);
         TextGameObject hintText = new TextGameObject("Fonts/HintFont", 2);
-        hintText.Text = textLines[textLines.Count - 1];
+        hintText.Text = textLines[height];
         hintText.Position = new Vector2(120, 25);
         hintText.Color = Color.Black;
         hintField.Add(hintText);
         VisibilityTimer hintTimer = new VisibilityTimer(hintField, 1, "hintTimer");
         Add(hintTimer);
-
         Add(tiles);
-        tiles.CellWidth = 72;
+		timer = new TimerGameObject(int.Parse(textLines[height + 1]), 101, "timer");
+		timer.Position = new Vector2(25, 30);
+		Add(timer);
+
+		tiles.CellWidth = 72;
         tiles.CellHeight = 55;
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < GameEnvironment.Random.Next(2) + 1; j++)
+            {
+                Mountain mountain = new Mountain("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), i, "", tiles.CellHeight * height);
+                backgrounds.Add(mountain);
+            }
+        }
         for (int x = 0; x < width; ++x)
         {
-            for (int y = 0; y < textLines.Count - 1; ++y)
+            for (int y = 0; y < height; ++y)
             {
                 Tile t = LoadTile(textLines[y][x], x, y);
                 tiles.Add(t, x, y);

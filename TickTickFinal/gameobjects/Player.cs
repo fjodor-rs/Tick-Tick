@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 partial class Player : AnimatedGameObject
 {
@@ -11,6 +13,7 @@ partial class Player : AnimatedGameObject
     protected bool exploded;
     protected bool finished;
     protected bool walkingOnIce, walkingOnHot;
+	protected List <Bomb> bombs;
 
     public Player(Vector2 start) : base(2, "player")
     {
@@ -23,6 +26,7 @@ partial class Player : AnimatedGameObject
 
         startPosition = start;
         Reset();
+		bombs = new List<Bomb>();
     }
 
     public override void Reset()
@@ -38,7 +42,7 @@ partial class Player : AnimatedGameObject
         PlayAnimation("idle");
         previousYPosition = BoundingBox.Bottom;
     }
-
+	
     public override void HandleInput(InputHelper inputHelper)
     {
         float walkingSpeed = 400;
@@ -70,6 +74,10 @@ partial class Player : AnimatedGameObject
         {
             Jump();
         }
+		if (inputHelper.KeyPressed(Keys.E))
+		{
+			ThrowBomb();
+		}
     }
 
     public override void Update(GameTime gameTime)
@@ -113,11 +121,43 @@ partial class Player : AnimatedGameObject
                 Die(true);
             }
         }
-        DoPhysics();
+		GameObjectList enemies = GameWorld.Find("enemies") as GameObjectList;
+
+		foreach (Bomb bomb in bombs)
+		{
+			bomb.Update(gameTime);
+			foreach (AnimatedGameObject enemy in enemies.Children)
+			{
+				if (bomb.CollidesWith(enemy))
+				{
+					bomb.Reset();
+					bomb.Visible = false;
+					enemy.Reset();
+				}
+			}
+		}
+		int num = bombs.Count;
+		for (int i = 0; i < num; i++)
+		{
+			if (!bombs[i].Visible)
+			{
+				bombs.Remove(bombs[i]);
+				num -= 1;
+			}
+		}
+
+		DoPhysics();
 		Camera.Instance.SetFocalPoint(new Vector2(this.GlobalPosition.X, this.GlobalPosition.Y));
 	}
 
-    public void Explode()
+	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+	{
+		base.Draw(gameTime, spriteBatch);
+		foreach (Bomb bomb in bombs)
+			bomb.Draw(gameTime, spriteBatch);
+	}
+
+	public void Explode()
     {
         if (!isAlive || finished)
         {
@@ -129,6 +169,13 @@ partial class Player : AnimatedGameObject
         position.Y += 15;
         PlayAnimation("explode");
     }
+
+	public void ThrowBomb()
+	{
+
+		Bomb bomb = new Bomb(new Vector2(BoundingBox.Right, GlobalPosition.Y));
+		bombs.Add(bomb);
+	}
 
     public void Die(bool falling)
     {
