@@ -61,7 +61,7 @@ class PlayingState : IGameLoopObject
             GameEnvironment.GameStateManager.SwitchTo("levelFinishedState");
         }
 
-        //----------------------------------------------------------------------------
+        //De sky en de timer vastpinnen op het camerascherm
         CurrentLevel.Sky.Position = Camera.Instance.Position;
         CurrentLevel.Timer.Position = Camera.Instance.Position + CurrentLevel.TimerOffset;
         CurrentLevel.TimerBackground.Position = Camera.Instance.Position + CurrentLevel.TimerBackgroundOffset;

@@ -76,7 +76,7 @@ partial class Player : AnimatedGameObject
         }
 		if (inputHelper.KeyPressed(Keys.E))
 		{
-			ThrowBomb();
+			ThrowBomb(Mirror);
 		}
     }
 
@@ -170,10 +170,10 @@ partial class Player : AnimatedGameObject
         PlayAnimation("explode");
     }
 
-	public void ThrowBomb()
+	public void ThrowBomb(bool left)
 	{
 
-		Bomb bomb = new Bomb(new Vector2(BoundingBox.Right, GlobalPosition.Y));
+		Bomb bomb = new Bomb(left, new Vector2(BoundingBox.Right, GlobalPosition.Y));
 		bombs.Add(bomb);
 	}
 

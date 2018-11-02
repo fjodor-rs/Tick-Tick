@@ -10,14 +10,17 @@ class Bomb : AnimatedGameObject
 {
 	private float gravity, verticalSpeed;
 
-	public Bomb(Vector2 position, int layer = 0, string id = "")
+	public Bomb(bool left, Vector2 position, int layer = 0, string id = "")
 		: base(layer, id)
 	{
 		LoadAnimation("Sprites/Player/spr_celebrate@14", "celebrate", false, 0.05f);
 		LoadAnimation("Sprites/Player/spr_explode@5x5", "explode", false, 0.04f);
 		this.position = position;
-		velocity = new Vector2(1000, -1000);
-		gravity = 55;
+        if (!left)
+		    velocity = new Vector2(1000, -1000);
+        else
+            velocity = new Vector2(-1000, -1000);
+        gravity = 55;
 	}
 
 	public override void Update(GameTime gameTime)

@@ -36,6 +36,7 @@ class Mountain : SpriteGameObject
 	{
 		base.Update(gameTime);
 
+        //parallax
         position.X = (startPosition.X + Camera.Instance.Position.X) * speedModifier.X;
         int cameraDif = levelHeight - GameEnvironment.Screen.Y;
         float heightMod = Camera.Instance.Position.Y / cameraDif * speedModifier.Y;
