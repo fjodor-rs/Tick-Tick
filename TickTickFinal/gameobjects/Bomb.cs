@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-class Bomb : AnimatedGameObject
+class Bomb : SpriteGameObject
 {
 	private float gravity, verticalSpeed;
 
 	public Bomb(bool left, Vector2 position, int layer = 0, string id = "")
-		: base(layer, id)
+		: base("Sprites/spr_match", layer, id)
 	{
-		LoadAnimation("Sprites/Player/spr_celebrate@14", "celebrate", false, 0.05f);
-		LoadAnimation("Sprites/Player/spr_explode@5x5", "explode", false, 0.04f);
 		this.position = position;
         if (!left)
 		    velocity = new Vector2(1000, -1000);
@@ -28,7 +26,6 @@ class Bomb : AnimatedGameObject
 		base.Update(gameTime);
 		position.Y += verticalSpeed;
 		verticalSpeed += gravity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-		PlayAnimation("celebrate");
     }
 
     public override void Reset()
