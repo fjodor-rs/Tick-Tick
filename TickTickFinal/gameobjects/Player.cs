@@ -176,7 +176,7 @@ partial class Player : AnimatedGameObject
 
 	public void ThrowBomb(bool left)
 	{
-
+        //het gooien van de lucifer
 		Bomb bomb = new Bomb(left, new Vector2(GlobalPosition.X - 10, GlobalPosition.Y - Height / 2));
 		bombs.Add(bomb);
 	}

@@ -13,6 +13,7 @@ class Bomb : SpriteGameObject
 	public Bomb(bool left, Vector2 position, int layer = 0, string id = "")
 		: base("Sprites/spr_match", layer, id)
 	{
+        //het kiezen van de gooirichting
 		this.position = position;
         if (!left)
 		    velocity = new Vector2(1000, -1000);
@@ -23,6 +24,7 @@ class Bomb : SpriteGameObject
 
 	public override void Update(GameTime gameTime)
 	{
+        //zwaartekracht toepassen
 		base.Update(gameTime);
 		position.Y += verticalSpeed;
 		verticalSpeed += gravity * (float)gameTime.ElapsedGameTime.TotalSeconds;

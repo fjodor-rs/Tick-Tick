@@ -52,6 +52,7 @@ partial class Level : GameObjectList
 		tiles.CellWidth = 72;
         tiles.CellHeight = 55;
 
+        //De plek van waar de bergen worden gemaakt is verplaatst zodat de hoogte van het level meegegeven kan worden
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < GameEnvironment.Random.Next(2) + 1; j++)
