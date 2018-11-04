@@ -10,17 +10,7 @@ class QuitButton : Button
     public QuitButton(string imageAsset, int layer = 0, string id = "quitButton") : base(imageAsset, layer, id)
     {
     }
-
-    public override Rectangle BoundingBox
-    {
-        get
-        {
-            int left = (int)(position.X - origin.X);
-            int top = (int)(GlobalPosition.Y - origin.Y);
-            return new Rectangle(left, top, Width, Height);
-        }
-    }
-
+	
     public override void HandleInput(InputHelper inputHelper)
     {
         pressed = inputHelper.MouseLeftButtonPressed() &&
