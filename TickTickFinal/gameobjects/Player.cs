@@ -132,7 +132,11 @@ partial class Player : AnimatedGameObject
 				{
 					bomb.Reset();
 					bomb.Visible = false;
-					enemy.Reset();
+
+					if (enemy.GetType() == typeof(Rocket))
+						enemy.Reset();
+					else
+						enemy.Visible = false;
 				}
 			}
 		}

@@ -29,15 +29,6 @@ class Bomb : AnimatedGameObject
 		position.Y += verticalSpeed;
 		verticalSpeed += gravity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 		PlayAnimation("celebrate");
-        //TileField tiles = GameWorld.Find("tiles") as TileField;
-        //Tile currentTile = tiles.Get((int)position.X, (int)position.Y) as Tile;
-        //TileType tileType = tiles.GetTileType((int)position.X, (int)position.Y);
-        //if (tileType != TileType.Background)
-        //{
-        //    PlayAnimation("explode");
-        //    velocity = Vector2.Zero;
-        //}
-
     }
 
     public override void Reset()
@@ -45,7 +36,6 @@ class Bomb : AnimatedGameObject
 		Velocity = Vector2.Zero;
 		gravity = 0;
 		verticalSpeed = 0;
-		PlayAnimation("explode");
 	}
 
 	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
