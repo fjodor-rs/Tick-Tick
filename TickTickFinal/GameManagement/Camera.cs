@@ -11,6 +11,8 @@ public class Camera
 {
 	private static Camera instance;
 	Vector2 position;
+
+	//We zetten de matrix op identity zodat de camera niet zwart is als het spel begint
 	Matrix viewMatrix = Matrix.Identity;
 	private int levelWidth, levelHeight;
 
@@ -43,7 +45,6 @@ public class Camera
 		viewMatrix = Matrix.CreateTranslation(new Vector3(-position, 0));
 	}
 
-    //We zetten de matrix op identity zodat de camera niet zwart is als het spel begint
 	public void ResetScreen()
 	{
 		viewMatrix = Matrix.Identity;

@@ -49,6 +49,7 @@ class Rocket : AnimatedGameObject
 
     public void CheckPlayerCollision()
     {
+		// Checkt of de speler boven op de rocket springt, als dit het geval is wordt de rocket gereset en spring de speler
         Player player = GameWorld.Find("player") as Player;
 		if (CollidesWith(player) && player.Velocity.Y > 0 && player.GlobalPosition.Y < GlobalPosition.Y 
 			&& BoundingBox.Left <= BoundingBox.Right && BoundingBox.Right >= player.BoundingBox.Left)
