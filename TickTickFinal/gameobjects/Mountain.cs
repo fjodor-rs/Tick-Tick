@@ -15,10 +15,12 @@ class Mountain : SpriteGameObject
 	public Mountain(string assetname, int layer = 0, string id = "", int levelHeight = 1)
 		: base(assetname, layer, id)
 	{
+        //de aangemaakte bergen een willekeurige X positie geven
         position = new Vector2((float)GameEnvironment.Random.NextDouble() * GameEnvironment.Screen.X - Width / 2, 0);
         startPosition = position;
         this.levelHeight = levelHeight;
 
+        //de scrollsnelheden in de x en y richting per laag
         switch (layer)
         {
             case 0: speedModifier = new Vector2(1f, 0.2f); break;
@@ -36,7 +38,7 @@ class Mountain : SpriteGameObject
 	{
 		base.Update(gameTime);
 
-        //parallax
+        //parallax scrollen t.o.v. de camera
         position.X = (startPosition.X + Camera.Instance.Position.X) * speedModifier.X;
         int cameraDif = levelHeight - GameEnvironment.Screen.Y;
         float heightMod = Camera.Instance.Position.Y / cameraDif * speedModifier.Y;

@@ -23,6 +23,7 @@ class QuitButton : Button
 
     public override void HandleInput(InputHelper inputHelper)
     {
+        //De muispositie binnen het scherm wordt gechecked t.o.v. de boundingbox
         pressed = inputHelper.MouseLeftButtonPressed() &&
             BoundingBox.Contains((int)inputHelper.MousePosition.X + Camera.Instance.Position.X, (int)inputHelper.MousePosition.Y + Camera.Instance.Position.Y);
 		Camera.Instance.ResetScreen();
@@ -30,6 +31,7 @@ class QuitButton : Button
 
     public override void Update(GameTime gameTime)
     {
+        //het laten meebewegen van de button t.o.v. de camera
         base.Update(gameTime);
         position.X = Camera.Instance.Position.X + GameEnvironment.Screen.X - 10 - Width;
         position.Y = Camera.Instance.Position.Y + 10;

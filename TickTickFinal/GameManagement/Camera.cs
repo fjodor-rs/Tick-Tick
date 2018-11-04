@@ -34,6 +34,7 @@ public class Camera
 		}
     }
 
+    //het focussen van de camera op de player, mits deze niet bij de randen van het level is
 	public void SetFocalPoint(Vector2 focalPosition)
 	{
 		position = new Vector2(focalPosition.X - GameEnvironment.Screen.X / 2, focalPosition.Y - GameEnvironment.Screen.Y / 2);
@@ -42,6 +43,7 @@ public class Camera
 		viewMatrix = Matrix.CreateTranslation(new Vector3(-position, 0));
 	}
 
+    //We zetten de matrix op identity zodat de camera niet zwart is als het spel begint
 	public void ResetScreen()
 	{
 		viewMatrix = Matrix.Identity;
